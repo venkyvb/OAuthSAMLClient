@@ -13,7 +13,7 @@ In order for the sample to run the following things need to be done:
   * CLIENT_ID = valid client ID based on the OAuth client registration mentioned above
   * CLIENT_SECRET = valid client secret associated with the OAuth client registration
   * ISSUER = your app which is registered as an OAuth IDP in your SAP Cloud for Customer tenant
-  * NAME_ID = named user in SAP Cloud for customer tenant for whom the OAuth token is being requested
+  * NAME_ID = named user in SAP Cloud for customer tenant for whom the OAuth token is being requested (note that in real scenarios this would be determined based on the current logged in user in your app)
   * ENTITY_ID = Tenant URL without the protocol (HTTPS://)
   * TOKEN_SERVICE_URL = https://your_tenant_url/sap/bc/sec/oauth2/token
   * KEY_STORE_PASS = JKS keystore password
