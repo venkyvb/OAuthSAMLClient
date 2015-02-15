@@ -6,6 +6,7 @@ Sample app that demonstrates the flow to get an OAuth Bearer token based on a SA
 In your SAP Cloud for Customer tenant please register an:
 * OAuth IDP (Identity provider)
 * OAuth Client
+
 The above mentioned activities can be performed in the Administration work-center in your SAP Cloud for customer tenant. 
 
 
