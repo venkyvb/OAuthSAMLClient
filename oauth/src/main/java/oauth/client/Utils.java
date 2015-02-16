@@ -71,11 +71,6 @@ public class Utils {
 		return "UTF-8";
 	}
 
-	public static String getResource(String resourceName) {
-		Utils.class.getClass().getResourceAsStream(ASSERTION_TEMPLATE);
-		return null;
-	}
-
 	public static String getAssertionTemplate() throws IOException {
 		String s = IOUtils.toString(Utils.class
 				.getResourceAsStream(ASSERTION_TEMPLATE));
