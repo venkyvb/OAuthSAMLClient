@@ -19,6 +19,7 @@ import org.apache.commons.io.IOUtils;
 public class Utils {
 
 	public static final String ASSERTION_TEMPLATE = "saml_bearer_assertion.xml";
+	public static final String PROPERTIES_FILE = "settings.properties";
 
 	public static final String NAME_ID_TYPE_EMAIL = "email";
 	public static final String NAME_ID_TYPE_USERID = "user_id";
@@ -30,10 +31,9 @@ public class Utils {
 	private static final int SESSION_NOT_ON_OR_AFTER_HOURS = 12;
 	private static Properties properties;
 
-
 	static {
 		DATE_TIME_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));
-		 try {
+		try {
 			properties = readConfig();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -72,13 +72,13 @@ public class Utils {
 	}
 
 	public static String getResource(String resourceName) {
-		Utils.class.getClass().getResourceAsStream("saml_bearer_assertion.xml");
+		Utils.class.getClass().getResourceAsStream(ASSERTION_TEMPLATE);
 		return null;
 	}
 
 	public static String getAssertionTemplate() throws IOException {
 		String s = IOUtils.toString(Utils.class
-				.getResourceAsStream("saml_bearer_assertion.xml"));
+				.getResourceAsStream(ASSERTION_TEMPLATE));
 		return s;
 	}
 
@@ -124,42 +124,41 @@ public class Utils {
 	public static String getEntityId() {
 		return properties.getProperty("ENTITY_ID");
 	}
-	
-	public static String getRefId(){
+
+	public static String getRefId() {
 		return "_" + UUID.randomUUID().toString();
 	}
-	
-	public static String getTokenServiceUrl(){
+
+	public static String getTokenServiceUrl() {
 		return properties.getProperty("TOKEN_SERVICE_URL");
 	}
-	
-	public static String getPrivateKeyAlias(){
+
+	public static String getPrivateKeyAlias() {
 		return properties.getProperty("PRIVATE_KEY_ALIAS");
 	}
-	
-	public static String getPrivateKeyPassword(){
+
+	public static String getPrivateKeyPassword() {
 		return properties.getProperty("PRIVATE_KEY_PASS");
 	}
-	
-	public static String getKeyStorePassword(){
+
+	public static String getKeyStorePassword() {
 		return properties.getProperty("KEY_STORE_PASS");
 	}
-	
-	public static String getClientSecret(){
+
+	public static String getClientSecret() {
 		return properties.getProperty("CLIENT_SECRET");
 	}
-	
-	private static Properties readConfig() throws IOException{
+
+	private static Properties readConfig() throws IOException {
 		Properties result = new Properties();
-		String propFileName = "settings.properties";
-		
-		InputStream is = Utils.class.getResourceAsStream(propFileName);
-		
-		if(is != null){
+
+		InputStream is = Utils.class.getResourceAsStream(PROPERTIES_FILE);
+
+		if (is != null) {
 			result.load(is);
-		}
-		else{
-			throw new FileNotFoundException("Property file '" + propFileName + "' not found in classpath");
+		} else {
+			throw new FileNotFoundException("Property file '" + PROPERTIES_FILE
+					+ "' not found in classpath");
 		}
 		return result;
 	}
