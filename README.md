@@ -28,4 +28,38 @@ The token obtained in this step needs to be added as a part of the "Authorizatio
 
 Note that this is just an illustrative sample.
 Happy coding !!
-  
+
+
+##### How to use OpenSSL to create the JKS key-store
+
+In case if you are interested, this section outlines how you can use OpenSSL to generate the JKS key-store that would be used by the OAuth client to sign the generated SAML assertions. Note that this example creates a keystore with name __samlidp_keystore.jks__, with the key alias as __samlidp_cert__.
+
+1) Generate signing key for the SAML IDP
+```
+openssl genrsa -aes256 -out samlidp.key 2048
+```
+
+2) Generate cert request for CA
+```
+openssl req -x509 -sha256 -new -key samlidp.key -out samlidp.csr
+```
+
+3) Self sign the certificate
+```
+openssl x509 -sha256 -days 3652 -in samlidp.csr -signkey samlidp.key -out samlidp_selfsigned.cer
+```
+
+4) Create pkcs12 keystore
+```
+openssl pkcs12 -export -name samlidp_cert -in samlidp_selfsigned.cer -inkey samlidp.key -out samlidp_keystore.p12
+```
+
+5) Convert pkcs12 into JKS keystore
+```
+keytool -importkeystore -destkeystore samlidp_keystore.jks -srckeystore samlidp_keystore.p12 -srcstoretype pkcs12 -alias samlidp_cert
+```
+
+6) Verify if everything is correct (using the java keytool utility)
+```
+keytool -list -v -keystore samlidp_keystore.jks
+```
