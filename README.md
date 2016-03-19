@@ -44,7 +44,7 @@ openssl genrsa -aes256 -out samlidp.key 2048
 openssl req -x509 -sha256 -new -key samlidp.key -out samlidp.csr
 ```
 
-3) Self sign the certificate
+3) Self sign the certificate (validity of 10 years !!)
 ```
 openssl x509 -sha256 -days 3652 -in samlidp.csr -signkey samlidp.key -out samlidp_selfsigned.cer
 ```
