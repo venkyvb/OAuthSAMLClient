@@ -3,12 +3,16 @@
 Sample app that demonstrates the flow to get an OAuth Bearer token based on a SAML2.0 assertion for an SAP Cloud for customer tenant. The token obtained can be used for SSO while invoking OData services offered by SAP Cloud for customer tenant.
 
 ### Pre-requisites:
+
+Overall flow for the OAuth SAML bearer flow is as shown below
+
+![OAuth SAML bearer flow](https://raw.githubusercontent.com/venkyvb/OAuthSAMLClient/master/sections/oauth_saml_bearer_flow.png)
+
 In your SAP Cloud for Customer tenant please register an:
 * OAuth IDP (Identity provider) - Note, if you are generating your own SAML signing certificates as given below, using OpenSSL, please upload the __samlidp_selfsigned.cer__ as the primary signing certificate when registering the OAuth IDP in C4C.
 * OAuth Client
 
 The above mentioned activities can be performed in the Administration work-center in your SAP Cloud for customer tenant. 
-
 
 In order for the sample to run the following things need to be done:
 * Add a JKS key-store to the project (e.g. in the current example the key-store is called as venkyvb.jks).
