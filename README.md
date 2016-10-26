@@ -79,7 +79,7 @@ keytool -list -v -keystore samlidp_keystore.jks
 ## To use OAuth SAML Bearer flow from HCP
 
 Define a new Destination in your SAP HANA Cloud Platform Account
-
+```
 Name=e.g. C4C
 Type=HTTP
 URL=C4C_URL
@@ -94,3 +94,4 @@ Token Service Password=<the password provided during OAuth client configuration,
 authnContextClassRef=urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession
 nameIdFormat=urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
 scope=UIWC:CC_HOME
+```
