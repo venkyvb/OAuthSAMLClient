@@ -95,3 +95,4 @@ authnContextClassRef=urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession
 nameIdFormat=urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
 scope=UIWC:CC_HOME
 ```
+Use the destination in your HCP app logic when you want to make API calls to C4C.
