@@ -74,3 +74,23 @@ keytool -importkeystore -destkeystore samlidp_keystore.jks -srckeystore samlidp_
 ```
 keytool -list -v -keystore samlidp_keystore.jks
 ```
+
+
+## To use OAuth SAML Bearer flow from HCP
+
+Define a new Destination in your SAP HANA Cloud Platform Account
+
+Name=e.g. C4C
+Type=HTTP
+URL=C4C_URL
+ProxyType=Internet
+Cloud Connector Version=2
+Authentication=OAuth2SAMLBearerAssertion
+Audience=C4C_URL_WITHOUT_PROTOCOL
+Client Key=<same as Token Service User>
+Token Service URL=https://myNNNNNN.crm.ondemand.com/sap/bc/sec/oauth2/token
+Token Service User=<oAuth client ID registered in C4C>
+Token Service Password=<the password provided during OAuth client configuration, under field "Client Secret">
+authnContextClassRef=urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession
+nameIdFormat=urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+scope=UIWC:CC_HOME
