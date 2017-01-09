@@ -28,7 +28,7 @@ In order for the sample to run the following things need to be done:
   * CLIENT_SECRET = valid client secret associated with the OAuth client registration
   * ISSUER = your app which is registered as an OAuth IDP in your SAP Cloud for Customer tenant
   * NAME_ID = named user in SAP Cloud for customer tenant for whom the OAuth token is being requested (note that in real scenarios this would be determined based on the current logged in user in your app)
-  * ENTITY_ID = Tenant URL without the protocol (HTTPS://)
+  * ENTITY_ID = Download the SAML SP metadata from the tenant and use the Entity ID (including the protocol part if it exists)
   * TOKEN_SERVICE_URL = https://your_tenant_url/sap/bc/sec/oauth2/token
   * KEY_STORE_PASS = JKS keystore password
   * ...
@@ -86,7 +86,7 @@ URL=C4C_URL
 ProxyType=Internet
 Cloud Connector Version=2
 Authentication=OAuth2SAMLBearerAssertion
-Audience=C4C_URL_WITHOUT_PROTOCOL
+Audience=Download the SAML SP metadata from your C4C tenant and use the Entity ID as the Audience
 Client Key=<same as Token Service User>
 Token Service URL=https://myNNNNNN.crm.ondemand.com/sap/bc/sec/oauth2/token
 Token Service User=<OAuth client ID registered in C4C>
